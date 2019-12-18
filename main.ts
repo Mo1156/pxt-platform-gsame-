@@ -1,16 +1,35 @@
 namespace SpriteKind {
     export const object = SpriteKind.create()
 }
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Player, function (sprite, otherSprite) {
+namespace myTiles {
+    //% blockIdentity=images._tile
+    export const tile0 = img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`
+}
+sprites.onOverlap(SpriteKind.Player, SpriteKind.object, function (sprite, otherSprite) {
     info.changeScoreBy(1)
     Money.vy += -250
     tramp.setKind(SpriteKind.object)
-    tramp.x += Math.randomRange(-70, 70)
-    tramp.y += Math.randomRange(-50, 60)
 })
 let tramp: Sprite = null
 let Money: Sprite = null
-scene.setBackgroundColor(15)
+scene.setBackgroundColor(1)
 Money = sprites.create(img`
 . . . . . . . . . . . . . . . . 
 . . . . . . 5 5 5 5 5 5 5 . . . 
@@ -29,8 +48,7 @@ Money = sprites.create(img`
 . . . . . . 5 5 5 5 5 5 5 . . . 
 . . . . . . . . . . . . . . . . 
 `, SpriteKind.Player)
-scene.cameraFollowSprite(Money)
-Money.ay = 100
+Money.top = 150
 tramp = sprites.create(img`
 f f f f f f f f f f f f f f f f 
 f f f f f f f f f f f f f f f f 
@@ -49,8 +67,10 @@ f f f f f f f f f f f f f f f f
 f f f f f f f f f f f f f f f f 
 f f f f f f f f f f f f f f f f 
 `, SpriteKind.object)
-Money.setPosition(300, 400)
-tramp.setPosition(300, 520)
+Money.setPosition(76, 38)
+tramp.setPosition(78, 101)
+Money.ay = 145
+scene.cameraFollowSprite(Money)
 game.onUpdate(function () {
     Money.x += controller.dx()
 })
