@@ -1,7 +1,10 @@
 {
     "name": "platform gsame ",
     "dependencies": {
-        "device": "*"
+        "device": "*",
+        "Color Fading": "github:jwunderl/pxt-color#v0.0.30",
+        "color": "*",
+        "color-coded-tilemap": "*"
     },
     "description": "",
     "files": [
